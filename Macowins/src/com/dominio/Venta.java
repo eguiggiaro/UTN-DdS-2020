@@ -1,19 +1,19 @@
 package com.dominio;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
+import java.util.List;
 
 public class Venta {
 
-	Date fecha;
-	ArrayList<ItemVenta> productos = new ArrayList<ItemVenta>();
+	LocalDate fecha;
+	List<ItemVenta> productos = new ArrayList<ItemVenta>();
 	MedioPago medioPago;
 	
-	public Date getFecha() {
+	public LocalDate getFecha() {
 		return fecha;
 	}
-	public void setFecha(Date fecha) {
+	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
 	public MedioPago getMedioPago() {
@@ -28,7 +28,7 @@ public class Venta {
 		
 		return medioPago.calcularPrecioFinal();
 	}
-	public Venta(Date fecha, ArrayList<ItemVenta> productos, MedioPago medioPago) {
+	public Venta(LocalDate fecha, List<ItemVenta> productos, MedioPago medioPago) {
 		super();
 		this.fecha = fecha;
 		this.productos = productos;

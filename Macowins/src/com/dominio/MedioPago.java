@@ -2,10 +2,11 @@ package com.dominio;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class MedioPago {
 	
-	ArrayList<ItemVenta> productos;
+	List<ItemVenta> productos;
 
 	public double calcularPrecioFinal() {
 		double precioFinal = 0;
@@ -19,7 +20,7 @@ public class MedioPago {
 
 	}
 
-	public void setProductos(ArrayList<ItemVenta> productos) {
+	public void setProductos(List<ItemVenta> productos) {
 		this.productos = productos;
 	}
 	

@@ -1,9 +1,11 @@
 package com.presentacion;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 
 import com.dominio.*;
 
@@ -12,9 +14,9 @@ public class Facturador {
 	public static void main(String[] args) {
 			System.out.println("Iniciando Facturador...");
 		
-			ArrayList<Prenda> listaPrendas = new ArrayList<Prenda>();
-			ArrayList<Venta> listaVentas = new ArrayList<Venta>();
-			ArrayList<ItemVenta> listaItems = new ArrayList<ItemVenta>();
+			List<Prenda> listaPrendas = new ArrayList<Prenda>();
+			List<Venta> listaVentas = new ArrayList<Venta>();
+			List<ItemVenta> listaItems = new ArrayList<ItemVenta>();
 
 			
 			Prenda pantalonJean = new Prenda(TipoPrenda.PANTALON, new EstadoPrendaLiquidacion(),4000);
@@ -48,25 +50,25 @@ public class Facturador {
 			ItemVenta item6 = new ItemVenta(sacoVerano,1);
 			listaItems.add(item6);			
 			
-			
+		
 
-			Venta venta1 = new Venta(devolverFecha("23/03/2020"),listaItems,new MedioPagoEfectivo());
+			Venta venta1 = new Venta(LocalDate.of(2020,03,23),listaItems,new MedioPagoEfectivo());
 			listaVentas.add(venta1);
 			
-			Venta venta2 = new Venta(devolverFecha("24/03/2020"),listaItems,new MedioPagoTarjeta(2,5));
+			Venta venta2 = new Venta(LocalDate.of(2020,03,24),listaItems,new MedioPagoTarjeta(2,5));
 			listaVentas.add(venta2);
 			
 
 			imprimirPrendas(listaPrendas);
-			imprimirGananciasDia(listaVentas,devolverFecha("23/03/2020"));
-			imprimirGananciasDia(listaVentas,devolverFecha("24/03/2020"));
+			imprimirGananciasDia(listaVentas,LocalDate.of(2020,03,23));
+			imprimirGananciasDia(listaVentas,LocalDate.of(2020,03,24));
 
 
 	
 	
 	
 	}
-	public static void imprimirPrendas(ArrayList<Prenda> lista) {
+	public static void imprimirPrendas(List<Prenda> lista) {
 		System.out.println("Imprimiendo listado de prendas...");
 		Iterator<Prenda> it = lista.iterator();
 		while (it.hasNext()) {
@@ -74,21 +76,8 @@ public class Facturador {
 	}
 	}
 	
-	public static Date devolverFecha(String fechaString) { 
-
-	    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-	    Date miFecha = null;
-		try {
-			miFecha = formato.parse(fechaString);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} // convierte String a Date
-	    return miFecha;
-	  }
 	
-	
-	public static void imprimirGananciasDia(ArrayList<Venta> lista, Date fecha) {
+	public static void imprimirGananciasDia(List<Venta> lista, LocalDate fecha) {
 		Iterator<Venta> it = lista.iterator();
 		Venta venta;
 		double ganancia = 0;
