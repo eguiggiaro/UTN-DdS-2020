@@ -6,7 +6,7 @@
 
 ### Guiggiaro Emiliano
 
-## **QuéMePongo:** Iteración 2
+## **QuéMePongo:**
 
 ***
 ### Diagrama de clases:
