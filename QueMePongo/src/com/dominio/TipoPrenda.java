@@ -76,8 +76,25 @@ public enum TipoPrenda {
 		public Categoria getCategoria() {
 			return Categoria.SUPERIOR;
 		}		
-	};
+	},
 	
+	GORRA_DEPORTIVA {
+		public Categoria getCategoria() {
+			return Categoria.ACCESORIO;
+		}		
+	},
+	
+	COLGANTE {
+		public Categoria getCategoria() {
+			return Categoria.ACCESORIO;
+		}		
+	},
+	
+	CORBATA {
+		public Categoria getCategoria() {
+			return Categoria.ACCESORIO;
+		}		
+	};
 	public abstract Categoria getCategoria();
 
 }

@@ -26,7 +26,7 @@ public class Prenda {
 		return tipoPrenda.getCategoria();
 	}
 	
-	public Material getTela()
+	public Material getMaterial()
 	{
 		return this.material;
 	}
@@ -46,6 +46,11 @@ public class Prenda {
 		return this.colorSecundario;
 	
 		}
+	}
+	
+	public TipoPrenda getTipoPrenda()
+	{
+		return this.tipoPrenda;
 	}
 	
 	public Trama getTrama()

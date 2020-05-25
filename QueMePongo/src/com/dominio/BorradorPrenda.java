@@ -6,8 +6,7 @@ public class BorradorPrenda {
 	private Color colorPrincipal;
 	private TipoPrenda tipoPrenda;
 	private Material material;
-	private Trama trama = Trama.LISA;
-	
+	private Trama trama = Trama.LISA;	
 	
 	public BorradorPrenda(TipoPrenda tipoPrenda)
 	{
@@ -24,6 +23,7 @@ public class BorradorPrenda {
 		this.material = Objects.requireNonNull(material,"Material es obligatorio");
 	}
 	
+
 	public void especificarTrama(Trama trama)
 	{
 		if (trama == null) {
