@@ -1,24 +1,24 @@
 package com.dominio;
+import java.util.Objects;
 
 import com.exception.SinColorSecundarioException;
 
 public class Prenda {
-	private TipoPrenda tipoPrenda;
-	private Tela tela;
-	private Color colorPrimario;
+	private Color colorPrincipal;
 	private Color colorSecundario;
+	private TipoPrenda tipoPrenda;
+	private Material material;
+	private Trama trama;
 	
-	public Prenda(TipoPrenda tipoPrenda, Tela tela, Color colorPrimario) {
+	public Prenda(TipoPrenda tipoPrenda, Material tela, Color colorPrimario, Trama trama) {
 		this.tipoPrenda = tipoPrenda;
-		this.tela = tela;
-		this.colorPrimario = colorPrimario;
+		this.material = tela;
+		this.colorPrincipal = colorPrimario;
+		this.trama = trama;
 	}
 	
-	public Prenda(TipoPrenda tipoPrenda, Tela tela, Color colorPrimario, Color colorSecundario) {
-		this.tipoPrenda = tipoPrenda;
-		this.tela = tela;
-		this.colorPrimario = colorPrimario;
-		this.colorSecundario = colorSecundario;
+	public void setColorSecundario(Color color) {
+		this.colorSecundario = color;
 	}
 	
 	public Categoria getCategoria()
@@ -26,14 +26,14 @@ public class Prenda {
 		return tipoPrenda.getCategoria();
 	}
 	
-	public Tela getTela()
+	public Material getTela()
 	{
-		return this.tela;
+		return this.material;
 	}
 	
 	public Color getColorPrimario()
 	{
-		return this.colorPrimario;
+		return this.colorPrincipal;
 	}
 	
 	public Color getColorSecundario() throws SinColorSecundarioException
@@ -46,6 +46,11 @@ public class Prenda {
 		return this.colorSecundario;
 	
 		}
+	}
+	
+	public Trama getTrama()
+	{
+		return this.trama;
 	}
 	
 }

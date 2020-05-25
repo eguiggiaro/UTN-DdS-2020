@@ -1,9 +1,11 @@
 package com.dominio;
 
-public enum Tela {
+public enum Material {
 	JEAN,
 	ALGODON,
 	LANA,
 	NYLON,
-	CUERO;
+	CUERO,
+	PIQUE,
+	ACETATO;
 }

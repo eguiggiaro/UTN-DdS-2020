@@ -1,48 +1,34 @@
 package com.test;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
-import com.dominio.Categoria;
-import com.dominio.Color;
-import com.dominio.Prenda;
-import com.dominio.Tela;
-import com.dominio.TipoPrenda;
+import com.dominio.*;
 import com.exception.SinColorSecundarioException;
 
-class PrendaTest {
-
+public class PrendaTest {
+	Prenda prenda;
+	
+	@Before
+	public void init() {
+		prenda = new Prenda(TipoPrenda.PANTALON, Material.JEAN, new Color("FF","FF","FF"), Trama.LISA);
+	}
+	
 	@Test
-	void NuevaPrendaCategoriaCorrecta() {
-		Prenda prenda = new Prenda(TipoPrenda.PANTALON, Tela.JEAN, Color.AZUL);
+	public void NuevaPrendaCategoriaCorrecta() {
 		assert(prenda.getCategoria() == Categoria.INFERIOR);
 	}
 	
-	@Test
-	void NuevaPrendaSinColorSecundario() {
-		
-		Prenda prenda = new Prenda(TipoPrenda.PANTALON, Tela.JEAN, Color.AZUL);
-		try
-		{
-			prenda.getColorSecundario();
-		}
-		catch (SinColorSecundarioException ex)
-		{
-			System.out.println(ex.getMessage());
-		}
+	@Test(expected = SinColorSecundarioException.class)
+	public void NuevaPrendaSinColorSecundario() {
+		prenda.getColorSecundario();
 	}
 	
 	
 	@Test
-	void NuevaPrendaConColorSecundario() {
-		Prenda prenda = new Prenda(TipoPrenda.PULLOVER, Tela.LANA, Color.VIOLETA, Color.AMARILLO);
-		try
-		{
-			assert(prenda.getColorSecundario() == Color.AMARILLO);
-		}
-		catch (SinColorSecundarioException ex)
-		{
-			System.out.println(ex.getMessage());
-		}
-	}	
-
+	public void NuevaPrendaConColorSecundario() {
+		prenda.setColorSecundario(new Color("00","00","00"));
+		assert(prenda.getColorSecundario().equals(new Color("00","00","00")));
+	}
+	
 }

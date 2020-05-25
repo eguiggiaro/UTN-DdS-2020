@@ -7,7 +7,13 @@ public enum TipoPrenda {
 			return Categoria.CALZADO;
 		}
 	},
-
+	
+	ZAPATILLA {
+		public Categoria getCategoria() {
+			return Categoria.CALZADO;
+		}
+	},
+	
 	CAMISA_MANGAS_CORTAS {
 		public Categoria getCategoria() {
 			return Categoria.SUPERIOR;
@@ -16,6 +22,12 @@ public enum TipoPrenda {
 
 
 	PANTALON {
+		public Categoria getCategoria() {
+			return Categoria.INFERIOR;
+		}
+	},
+	
+	PANTALON_DE_VESTIR {
 		public Categoria getCategoria() {
 			return Categoria.INFERIOR;
 		}
@@ -52,6 +64,18 @@ public enum TipoPrenda {
 		public Categoria getCategoria() {
 			return Categoria.ACCESORIO;
 		}
+	},
+	
+	CHOMBA {
+		public Categoria getCategoria() {
+			return Categoria.SUPERIOR;
+		}
+	},
+	
+	CAMISA {
+		public Categoria getCategoria() {
+			return Categoria.SUPERIOR;
+		}		
 	};
 	
 	public abstract Categoria getCategoria();
