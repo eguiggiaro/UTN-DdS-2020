@@ -1,0 +1,160 @@
+@startuml
+enum Material {
+	JEAN,
+	ALGODON,
+	LANA,
+	NYLON,
+	CUERO,
+        ETC;
+int getTemperaturaMaxima()
+}
+class Prenda {
+        Color colorPrincipal
+        Color colorSecundario
+	Categoria categoria()
+	void setColorSecundario()
+
+}
+
+class Usuario {
+	List<Guardarropa> misGuardarropas;
+}
+
+class Guardarropa {
+         List<Prenda> listadoPrendas
+         List<Solicitud> solicitudes
+        void agregarPrenda(Prenda prenda)
+        void eliminarPrenda(Prenda prenda)
+}
+
+abstract class Solicitud{
+        Guardarropas guardarropas
+        Prenda prenda
+        abstract void aplicar()
+        abstract void deshacer()
+}
+
+class SolicitudAlta{
+        void aplicar()
+        void deshacer()
+}
+
+class SolicitudBaja{
+        void aplicar()
+        void deshacer()
+}
+
+class BorradorPrenda{
+        TipoPrenda tipoPrenda
+        Material material
+        Color colorPrincipal
+        Trama trama
+        void especificarColorPrincipal(Color color)
+        void especificarMaterial(Material material)
+        void especificarTrama(Trama trama)
+        Prenda crearPrenda(Material material)
+
+}
+enum Categoria {
+	SUPERIOR,
+	INFERIOR,
+	CALZADO,
+	ACCESORIO,
+        ETC;
+}
+enum Trama {
+	LISA,
+	RAYADA,
+	LUNARES,
+        ETC;
+}
+class Color {
+	int cantidadRojo
+	int cantidadVerde
+	int cantidadAzul
+}
+enum TipoPrenda {
+	ZAPATO,
+	CAMISA_MANGAS_CORTAS,
+	PANTALON,
+	SHORT,
+	PULLOVER,
+	SOMBRERO,
+	SACO,
+	COLLAR;
+	Categoria getCategoria()
+}
+class Uniforme{
+	Prenda prendaSuperior
+	Prenda prendaInferior
+	Prenda calzado
+	public static Uniforme fabricar(Sastre sastre)
+}
+interface Sastre{
+	Prenda fabricarParteSuperior();
+	Prenda fabricarParteInferior();
+	Prenda fabricarcalzado();
+}
+class SastreSanJuan{
+}
+
+class SastreInstitutoJohnson{
+}
+
+interface ServicioClima{
+	int getTemperatura()
+}
+
+class AccuWeatherAPI{
+        List<HashMap> getWeather(String ciudad)
+}
+
+class AccuWeatherServicio{
+	int temperatura;
+}
+
+class Atuendo{
+	Prenda prendaSuperior
+	Prenda prendaInferior
+	Prenda calzado
+	Prenda accesorio
+}
+
+class GeneradorAtuendos{
+	int temperatura
+	List<Prenda> listadoPrendas
+	Prenda prendaSuperior
+	Prenda prendaInferior
+	Prenda calzado
+	Prenda accesorio
+Atuendo devolverAtuendoSugerido()
+}
+
+Usuario--> "*" Guardarropa
+Guardarropa --> "*" Prenda
+Guardarropa --> "*" Solicitud
+GeneradorAtuendos ..> Atuendo
+GeneradorAtuendos --> ServicioClima
+Atuendo --> Prenda
+Atuendo --> Prenda
+Atuendo --> Prenda
+Atuendo --> Prenda
+AccuWeatherServicio --> AccuWeatherAPI
+ServicioClima ^.. AccuWeatherServicio
+Prenda --> Material 
+Prenda --> Color
+Prenda --> Color
+Prenda --> TipoPrenda
+Prenda --> Trama
+BorradorPrenda ..> Prenda
+Uniforme --> Prenda
+Uniforme --> Prenda
+Uniforme --> Prenda
+TipoPrenda --> Categoria
+Uniforme ..> Sastre
+Sastre ^.. SastreInstitutoJohnson
+Sastre ^.. SastreSanJuan
+Solicitud ^.. SolicitudAlta
+Solicitud ^.. SolicitudBaja
+Solicitud --> Guardarropa
+@enduml
